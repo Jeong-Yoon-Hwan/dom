@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module">
+    const root = document.getElementById("root");
+
+    root.style.width="100px";
+    root.style.height="100px";
+    root.style.backgroundColor="tomato";
+
+    console.dir(root.style);  
+    
+    // const dom = [];
+    // function makeTag(count,tagName,attr,attrValue,textNode){
+    //   for(let i=0;i<count;i++){
+    //     dom.push(`<${tagName} ${attr}="${attrValue}-${i+1}">${textNode}</${tagName}>`);
+    //   }
+    // }
+    // makeTag(5,'div','id','test','꼬부기');
+    // console.log(dom);
+    // root.innerHTML=dom.join('');
+
+    const list = [];
+    function createList(color,count){
+      for(let i=0;i<count;i++){ 
+        list.push(`<li style='color:${color}'onclick="alert('메롱')">꼬부기</li>`);
+      }
+      list.push(`</ul>`);
+      list.unshift(`<ul>`);
+    }
+    console.log(list);
+    createList('blue',3);
+    root.innerHTML=list.join("");
+    
+  </script>
+</body>
+</html>
