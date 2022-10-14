@@ -1,3 +1,5 @@
+import json
+
 class Test:
     def __init__(self, id, name):
         self.id = id
@@ -5,6 +7,7 @@ class Test:
         
 a = [1,2,3,4,5]
 b = ["jung","song","kim","lee","pack"]
+
 
 data = []
 data.append(b)
@@ -20,5 +23,9 @@ while i < 5:
 
 print(newData)  # newData 배열 출력
 
+
+file_path = "./sample.json"
+with open(file_path,"w") as outfile:
+  json.dump(newData,outfile)
 
 
