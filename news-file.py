@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup, BeautifulStoneSoup
 import json
+import dload
 
 headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"}
 
@@ -18,7 +19,9 @@ if __name__ == "__main__":
 
     title = beautifulSoup.select(".type06_headline > li > dl > dt:nth-child(2) > a")
     content = beautifulSoup.select(".lede")
-    
+
+    #이미지
+    thumbnails = beautifulSoup.select(".photo > a > img")
 
     headline.clear() #배열값 비우기
     contents.clear()
@@ -61,3 +64,9 @@ with open(file_path,"w",encoding="UTF-8") as outfile:
   json.dump(newsArr,outfile,ensure_ascii=False,indent=4)
 
 
+
+i=1
+for new in thumbnails:
+  src = new["src"]
+  dload.save(src,f'imgs/{i}.jpg')
+  i+=1
